@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanSlate – Metadata Eraser</title>
+  <meta name="description" content="Strip EXIF, XMP and document metadata from images, PDFs and Office files — entirely in your browser, nothing uploaded anywhere." />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JSZip only needed for Office files (docx/xlsx/pptx). Everything else is zero-dependency. -->
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+  <header>
+    <div class="brand">
+      <h1>🧹 CleanSlate</h1>
+      <p>Strip metadata. Stay private. Never leaves your browser.</p>
+    </div>
+    <button id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light mode">☀ Light</button>
+  </header>
+
+  <!-- drop zone -->
+  <div class="card">
+    <div id="drop-zone" role="button" tabindex="0" aria-label="Drop files here or click to browse">
+      <input type="file" id="file-input" multiple
+        accept=".jpg,.jpeg,.png,.tiff,.tif,.webp,.pdf,.docx,.xlsx,.pptx"
+        aria-label="File input" />
+      <span class="drop-icon">📂</span>
+      <span class="drop-label">Drop files here, or click to browse</span>
+      <span class="drop-hint">JPEG · PNG · WebP · TIFF · PDF · DOCX · XLSX · PPTX</span>
+      <span class="drop-hint" style="margin-top:4px; opacity:.6">or paste from clipboard (Ctrl+V / ⌘V)</span>
+    </div>
+
+    <div id="toolbar">
+      <div style="flex:1">
+        <div class="progress-wrap" id="progress-wrap" style="display:none">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <span id="file-count" style="font-size:.8rem; color:var(--muted)"></span>
+      </div>
+      <button class="btn btn-sm" onclick="clearAll()">Clear all</button>
+      <button class="btn btn-sm btn-primary" id="clean-all-btn" onclick="cleanAll()">⬇ Download all cleaned</button>
+    </div>
+  </div>
+
+  <!-- file cards injected by script.js -->
+  <div id="file-list"></div>
+
+  <footer>
+    <p>All processing happens locally in your browser — zero uploads, zero tracking.<br />
+    Files are read once, processed in memory, then discarded.</p>
+  </footer>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
