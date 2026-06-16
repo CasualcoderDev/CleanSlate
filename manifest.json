@@ -1,5 +1,5 @@
 {
-  "name": "CleanSlate Metadata Eraser",
+  "name": "CleanSlate",
   "short_name": "CleanSlate",
   "description": "Strip EXIF, XMP, and document metadata entirely in your browser.",
   "start_url": "./index.html",
