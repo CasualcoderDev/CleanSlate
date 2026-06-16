@@ -22,6 +22,7 @@ CleanSlate is a privacy-first metadata cleaner that runs entirely in your browse
 - **Before → after file size** — shows exactly how much weight was cut, with the percentage saved in green
 - **Stripped fields confirmation** — after cleaning, the card shows exactly which fields were removed
 - **Fully client-side** — everything runs in memory in your browser, nothing ever touches a server
+- **Installable PWA** — works completely offline and can be installed as a standalone app on your desktop or phone
 - **Batch download** — clean one file or grab the whole lot as a ZIP
 - **Dark / light mode** — follows your system setting by default, manual toggle saves your preference
 - **Keyboard accessible** — Tab to the drop zone, Enter/Space to open the file picker

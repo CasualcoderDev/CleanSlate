@@ -2,6 +2,10 @@
 //  State
 // ─────────────────────────────────────────────────────────────
 
+console.log('%c🧹 CleanSlate', 'font-size: 24px; font-weight: bold; color: #2563eb;');
+console.log('%cPrivacy-first metadata cleaner running entirely in your browser.', 'font-size: 14px; margin-bottom: 8px;');
+console.log('%cContributions welcome! https://github.com/CasualcoderDev/CleanSlate', 'font-size: 12px; color: gray;');
+
 // Each entry: { id, file, thumbUrl, meta, cleanedBlob, cleanedSize, removedFields, status }
 const files = [];
 let idSeq = 0;
@@ -769,4 +773,16 @@ function toast(msg, duration = 3000) {
   el.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), duration);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  Service Worker Registration (PWA)
+// ─────────────────────────────────────────────────────────────
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => {
+      console.warn('Service worker registration failed:', err);
+    });
+  });
 }

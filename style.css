@@ -72,7 +72,20 @@ header {
   margin-top: 2px;
 }
 
-/* ── theme toggle ────────────────────────────────────────────── */
+/* ── theme toggle & actions ──────────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.github-link {
+  color: var(--muted);
+  display: flex;
+  transition: color .15s;
+}
+.github-link:hover { color: var(--text); }
+
 #theme-btn {
   background: var(--surface);
   border: 1px solid var(--border);

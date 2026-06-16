@@ -1,0 +1,17 @@
+{
+  "name": "CleanSlate Metadata Eraser",
+  "short_name": "CleanSlate",
+  "description": "Strip EXIF, XMP, and document metadata entirely in your browser.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f4f2",
+  "theme_color": "#141412",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
