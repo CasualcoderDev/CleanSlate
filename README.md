@@ -1,6 +1,14 @@
 # 🧹 CleanSlate
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)]()
+
 **Strip metadata from files without uploading them anywhere.**
+
+<p align="center">
+  <img src="cleanslate-screenshot.png" alt="CleanSlate Screenshot" width="800">
+</p>
 
 CleanSlate is a privacy-first metadata cleaner that runs entirely in your browser. Drop in images, PDFs, or Office documents, see exactly what metadata is buried in them, then download clean versions. No servers, no tracking, no sign-up, no nothing.
 
