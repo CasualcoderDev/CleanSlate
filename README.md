@@ -77,6 +77,9 @@ CleanSlate/
 ├── index.html   # markup only, no inline scripts or styles
 ├── style.css    # design tokens, layout, dark/light mode
 ├── script.js    # all the logic — parsing, stripping, UI
+├── sw.js        # service worker for offline PWA support
+├── manifest.json# PWA manifest file
+├── icon.svg     # app icon
 └── README.md
 ```
 
