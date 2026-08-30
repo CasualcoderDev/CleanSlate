@@ -1,4 +1,5 @@
-const CACHE_NAME = 'cleanslate-v1';
+// Bump this version string whenever you deploy changes to bust the old cache.
+const CACHE_NAME = 'cleanslate-v2-2026-08-30';
 
 // We cache all our local assets plus the JSZip CDN file
 const ASSETS = [

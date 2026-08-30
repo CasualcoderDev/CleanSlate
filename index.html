@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CleanSlate – Metadata Eraser</title>
-  <meta name="description" content="Strip EXIF, XMP and document metadata from images, PDFs and Office files — entirely in your browser, nothing uploaded anywhere." />
+  <meta name="description" content="Strip EXIF, GPS coordinates, and metadata from images, videos, audio, PDFs and Office files — entirely in your browser, nothing uploaded anywhere." />
   
   <!-- Emoji Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧹</text></svg>">
@@ -44,11 +44,11 @@
   <div class="card">
     <div id="drop-zone" role="button" tabindex="0" aria-label="Drop files here or click to browse">
       <input type="file" id="file-input" multiple
-        accept=".jpg,.jpeg,.png,.tiff,.tif,.webp,.pdf,.docx,.xlsx,.pptx"
+        accept=".jpg,.jpeg,.png,.tiff,.tif,.webp,.svg,.pdf,.docx,.xlsx,.pptx,.mp3,.mp4,.m4a,.mov"
         aria-label="File input" />
       <span class="drop-icon">📂</span>
       <span class="drop-label">Drop files here, or click to browse</span>
-      <span class="drop-hint">JPEG · PNG · WebP · TIFF · PDF · DOCX · XLSX · PPTX</span>
+      <span class="drop-hint">Images (JPG, PNG, WebP, TIFF, SVG) · Docs (PDF, DOCX, XLSX, PPTX) · Media (MP3, MP4, MOV)</span>
       <span class="drop-hint" style="margin-top:4px; opacity:.6">or paste from clipboard (Ctrl+V / ⌘V)</span>
     </div>
 

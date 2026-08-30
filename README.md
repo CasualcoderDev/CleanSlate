@@ -38,8 +38,11 @@ CleanSlate is a privacy-first metadata cleaner that runs entirely in your browse
 | **PNG** | `tEXt`, `iTXt`, `zTXt`, `eXIf`, `tIME`, `iCCP` chunks |
 | **WebP** | EXIF, XMP, ICC profile (VP8X extended format) |
 | **TIFF** | Make, Model, Software, DateTime, Artist, Copyright, description |
+| **SVG** | `<metadata>`, `<title>`, `<desc>`, editor namespaces (Inkscape/Illustrator), comments, and dangerous `<script>` tags |
 | **PDF** | Title, Author, Subject, Keywords, Creator, Producer, dates, XMP stream |
-| **DOCX / XLSX / PPTX** | Author, title, dates (`core.xml`) and app name, version, company (`app.xml`) |
+| **DOCX / XLSX / PPTX** | Document properties (`core.xml`, `app.xml`, `custom.xml`), preview thumbnails (`thumbnail.*`), embedded media EXIF/metadata, and normalized timestamps |
+| **MP3** | ID3v2 text frames (Artist, Title, Album, Encoder, Comments, Album art) and trailing ID3v1 tags |
+| **MP4 / M4A / MOV** | GPS coordinates (`©xyz`), QuickTime user-data atoms (`udta`, `meta`), title/author tags, and container creation timestamps |
 
 ---
 
@@ -48,11 +51,20 @@ CleanSlate is a privacy-first metadata cleaner that runs entirely in your browse
 ### Images (JPEG / PNG / WebP / TIFF)
 Files are parsed at the binary level with `ArrayBuffer` and `DataView`. Metadata segments get identified by their format markers and dropped when the output is written — the actual image data is never touched.
 
+### Vector Graphics (SVG)
+Parsed with native `DOMParser`. Metadata blocks, RDF elements, editor namespaces (Inkscape, Illustrator, Figma), comments, and executable `<script>` tags are sanitized and stripped while keeping vector paths and styling intact.
+
+### Audio (MP3)
+ID3v2 headers and frames at the front of the file and ID3v1 trailers at the end of the file are stripped losslessly at the byte level without recompressing the audio stream.
+
+### Video & Containers (MP4 / M4A / MOV)
+ISO Base Media format boxes are parsed to locate `udta` (user data) and `meta` tags. Boxes carrying GPS coordinates and personal tags are safely neutralized to `free` filler boxes, and container timestamps in `mvhd`/`tkhd` are zeroed out — preserving 100% sample table offset integrity (`stco`/`co64`) without video re-encoding.
+
 ### PDFs
 Info dictionary fields get overwritten in-place with spaces of the same byte length, keeping the cross-reference table intact without needing a full PDF parser.
 
 ### Office Documents
-DOCX, XLSX, and PPTX files are just ZIP archives with XML inside. [JSZip](https://stuk.github.io/jszip/) unpacks them, the metadata XMLs (`docProps/core.xml` and `docProps/app.xml`) get cleaned, and everything gets re-zipped. Nothing else in the document is touched.
+DOCX, XLSX, and PPTX files are Open Packaging Conventions (OPC) ZIP archives. [JSZip](https://stuk.github.io/jszip/) unpacks them, optional metadata parts (`core.xml`, `app.xml`, `custom.xml`, and preview thumbnails) are stripped, dangling relationship references in `_rels` and `[Content_Types].xml` are cleaned with native XML DOM parsing, embedded media images are scrubbed of EXIF metadata, archive timestamps are normalized to epoch 0, and the package structure is validated before saving.
 
 ---
 

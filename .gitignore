@@ -1,13 +1,13 @@
-# OS generated files
+
+._*
 .DS_Store
 .DS_Store?
-._*
+.idea/
 .Spotlight-V100
 .Trashes
+.vscode/
+*.swp
+# Editors/IDEs
+# OS generated files
 ehthumbs.db
 Thumbs.db
-
-# Editors/IDEs
-.vscode/
-.idea/
-*.swp
